@@ -20,6 +20,7 @@ from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/eco/ola', views.ola, name=("ola")),
-    path('blog/eco/info', views.info, name=("info"))
+    path('blog/eco/<str:texto>/', views.eco, name=("eco")),
+    path('blog/info/', views.info, name=("info")),
+    path('blog/', views.index, name=(""))
 ]
