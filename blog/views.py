@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from datetime import datetime
 
-def template_completo(request):
+def home(request):
 
     produtos = [
         {"nome": "Notebook", "preco": 2500.00},
@@ -22,7 +22,7 @@ def template_completo(request):
         "produtos": produtos,  # Lista de produtos para exibir na tabela
                  
     }
-    return render(request, "template_completo.html", contexto)
+    return render(request, "home.html", contexto)
 
 
 
@@ -31,3 +31,5 @@ def template_completo(request):
 def contato(request, phone):
     return render(request, "contato.html", {"telefone": phone})
 
+def about(request):
+    return render(request, "about.html", {})

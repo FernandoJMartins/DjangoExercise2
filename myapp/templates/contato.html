@@ -1,62 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Template Completo - Exercício Django</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f5f5f5;
-      }
-      .container {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .section {
-        margin: 20px 0;
-        padding: 15px;
-        border-radius: 5px;
-        border-left: 4px solid #007bff;
-      }
-      .usuario-section {
-        background-color: #e3f2fd;
-        border-left-color: #2196f3;
-      }
+{% extends 'base.html' %}
 
-      .nav-link {
-        display: inline-block;
-        margin: 0 10px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      .nav-link:hover {
-        background-color: #0056b3;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1 style="text-align: center; color: #333">
-          EXERCICIO 3 - FERNANDO JULIO
-        </h1>
-      </header>
+{% block title %}Contato - Exercício Django{% endblock %}
 
-      <div class="section usuario-section">
-        <h1>Telefone: {{ telefone }}</h1>
-      </div>
+{% block content %}
+<div class="section" style="background-color: #e3f2fd; border-left-color: #2196f3;">
+  <h2>📞 Informações de Contato</h2>
+  <h3>Telefone: {{ telefone }}</h3>
+</div>
 
-      <div class="section nav-section">
-        <a href="{% url 'exercicio' %}" class="nav-link">Template Completo</a>
-      </div>
-    </div>
-  </body>
+{% endblock %}
+    
+
+ 
 </html>
