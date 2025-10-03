@@ -37,13 +37,31 @@
         background-color: #f8d7da;
         color: #721c24;
       }
+      .nav-section {
+        background-color: #f8f9fa;
+        border-left-color: #28a745;
+        text-align: center;
+      }
+      .nav-link {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      .nav-link:hover {
+        background-color: #0056b3;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <header>
         <h1 style="text-align: center; color: #333">
-          🚀 Exercício de Variáveis no Template
+          EXERCICIO 3 - FERNANDO JULIO
         </h1>
       </header>
 
@@ -151,6 +169,12 @@
           <li><strong>now:</strong> {{ now|date:"d/m/Y H:i:s" }}</li>
           <li><strong>is_logged_in:</strong> {{ is_logged_in }}</li>
         </ul>
+      </div>
+
+      <div class="section nav-section">
+        <a href="{% url 'contato' phone='123456789' %}" class="nav-link"
+          >Contato</a
+        >
       </div>
     </div>
   </body>
