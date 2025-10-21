@@ -19,7 +19,6 @@ from django.urls import path
 from blog import views
 
 urlpatterns = [
-    path('home', views.home, name='home'),
-    path('about', views.about, name='about'),
-    path('contato/<str:phone>', views.contato, name='contato'),
+    path('admin', admin.site.urls),
+
 ]
