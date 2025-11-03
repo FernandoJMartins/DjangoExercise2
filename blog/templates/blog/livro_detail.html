@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>{{ object.titulo }}</h1>
+<p>ISBN: {{ object.ISBN }}</p>
+<p>Preço: {{ object.preco }}</p>
+<p>Estoque: {{ object.estoque }}</p>
+<p>Editora: {{ object.editora.nome }}</p>
+<p>
+  <a href="{% url 'blog:livro-edit' object.pk %}">Editar</a> |
+  <a href="{% url 'blog:livro-delete' object.pk %}">Excluir</a> |
+  <a href="{% url 'blog:livro-list' %}">Voltar</a>
+</p>
+{% endblock %}

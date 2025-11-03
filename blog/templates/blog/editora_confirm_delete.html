@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Confirmar exclusão</h1>
+<p>Excluir editora: {{ object.nome }} ?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sim, excluir</button>
+  <a href="{% url 'blog:editora-list' %}">Cancelar</a>
+</form>
+{% endblock %}

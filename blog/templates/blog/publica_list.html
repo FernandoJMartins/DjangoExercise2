@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Publicações</h1>
+<a href="{% url 'blog:publica-add' %}">Nova publicação</a>
+<ul>
+  {% for pub in object_list %}
+    <li>
+      <a href="{% url 'blog:publica-detail' pub.pk %}">{{ pub.autor.nome }} → {{ pub.livro.titulo }}</a>
+      - <a href="{% url 'blog:publica-edit' pub.pk %}">editar</a>
+      - <a href="{% url 'blog:publica-delete' pub.pk %}">excluir</a>
+    </li>
+  {% empty %}
+    <li>Nenhuma publicação cadastrada.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

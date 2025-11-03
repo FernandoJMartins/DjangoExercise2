@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Editoras</h1>
+<a href="{% url 'blog:editora-add' %}">Nova editora</a>
+<ul>
+  {% for editora in object_list %}
+    <li>
+      <a href="{% url 'blog:editora-detail' editora.pk %}">{{ editora.nome }}</a>
+      - <a href="{% url 'blog:editora-edit' editora.pk %}">editar</a>
+      - <a href="{% url 'blog:editora-delete' editora.pk %}">excluir</a>
+    </li>
+  {% empty %}
+    <li>Nenhuma editora cadastrada.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

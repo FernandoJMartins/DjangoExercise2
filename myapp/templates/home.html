@@ -1,13 +1,17 @@
-{% extends 'base.html' %}
-
-{% block title %}Exercício Django{% endblock %}
-  {% block content %}
-  <body>
-    <div class="container">
-      <header>
-        <h1 style="text-align: center; color: #333">
-          EXERCICIO 4 - FERNANDO JULIO
-        </h1>
-      </header>
-  {% endblock %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blog CRUD</title>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'blog:autor-list' %}">Autores</a> |
+    <a href="{% url 'blog:editora-list' %}">Editoras</a> |
+    <a href="{% url 'blog:livro-list' %}">Livros</a> |
+    <a href="{% url 'blog:publica-list' %}">Publicações</a>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
 </html>

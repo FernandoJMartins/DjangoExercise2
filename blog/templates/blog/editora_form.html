@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>{% if object %}Editar Editora{% else %}Nova Editora{% endif %}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Salvar</button>
+  <a href="{% url 'blog:editora-list' %}">Cancelar</a>
+</form>
+{% endblock %}

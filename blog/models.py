@@ -4,8 +4,14 @@ from django.db import models
 class Autor(models.Model):
     nome = models.CharField(max_length=150, unique=True)
 
+    def __str__(self):
+        return self.nome
+
 class Editora(models.Model):
     nome = models.CharField(max_length=150, unique=True)
+
+    def __str__(self):
+        return self.nome
 
 class Livro(models.Model):
     ISBN = models.CharField(max_length=13, unique=True)
@@ -14,6 +20,13 @@ class Livro(models.Model):
     estoque = models.IntegerField()
     editora = models.ForeignKey(Editora, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.titulo} ({self.ISBN})"
+
+
 class Publica(models.Model):
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE, blank=False)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, blank=False)
+
+    def __str__(self):
+        return f"{self.autor} → {self.livro}"

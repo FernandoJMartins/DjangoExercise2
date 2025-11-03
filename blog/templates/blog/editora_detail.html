@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Editora: {{ object.nome }}</h1>
+<p>
+  <a href="{% url 'blog:editora-edit' object.pk %}">Editar</a> |
+  <a href="{% url 'blog:editora-delete' object.pk %}">Excluir</a> |
+  <a href="{% url 'blog:editora-list' %}">Voltar</a>
+</p>
+{% endblock %}

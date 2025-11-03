@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Confirmar exclusão</h1>
+<p>Excluir publicação: {{ object.autor.nome }} → {{ object.livro.titulo }} ?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sim, excluir</button>
+  <a href="{% url 'blog:publica-list' %}">Cancelar</a>
+</form>
+{% endblock %}

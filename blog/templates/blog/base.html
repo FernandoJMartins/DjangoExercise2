@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUD Livros</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    nav a { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'blog:autor-list' %}">Autores</a>
+    <a href="{% url 'blog:editora-list' %}">Editoras</a>
+    <a href="{% url 'blog:livro-list' %}">Livros</a>
+    <a href="{% url 'blog:publica-list' %}">Publicações</a>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

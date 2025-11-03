@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Livros</h1>
+<a href="{% url 'blog:livro-add' %}">Novo livro</a>
+<ul>
+  {% for livro in object_list %}
+    <li>
+      <a href="{% url 'blog:livro-detail' livro.pk %}">{{ livro.titulo }}</a>
+      - <a href="{% url 'blog:livro-edit' livro.pk %}">editar</a>
+      - <a href="{% url 'blog:livro-delete' livro.pk %}">excluir</a>
+    </li>
+  {% empty %}
+    <li>Nenhum livro cadastrado.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
