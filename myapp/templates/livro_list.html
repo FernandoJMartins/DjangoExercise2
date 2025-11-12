@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Exercício Django{% endblock %}
+  {% block content %}
+  <h2>Lista de Livros</h2>
+  <ul>
+    {% for livro in livros %}
+        <li>{{ livro.titulo }} - {{ livro.autor.nome }} - {{ livro.editora.nome }}</li>
+    {%empty%}
+        <li>Nenhum livro disponível.</li>
+    {%endfor %}
+
+
+
+    {% if livros.has_other_pages %}
+
+    {% if livros.has_previous %}
+
+        <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+
+    {% endif %}
+    <span>Página {{ livros.number }} de {{ livros.paginator.num_pages }}</span>
+    {% if livros.has_next %}
+
+        <a href="?page={{ livros.next_page_number }}">Próxima</a>
+
+    {% endif %}
+
+    {% endif %}
+  </ul>
+  {% endblock %}
+</html>
