@@ -14,7 +14,7 @@ def livro_list(request):
     livros_list = Livro.objects.all()
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(livros_list, 2)  
+    paginator = Paginator(livros_list, 10)  
     try:
         livros = paginator.page(page)
     except PageNotAnInteger:

@@ -1,0 +1,143 @@
+/* Leve e agradável — cores suaves, espaçamento e tipografia limpa */
+
+:root{
+    --bg: #f7f9fb;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #2563eb; /* azul suave */
+    --accent-2: #10b981; /* verde suave */
+    --border: #e6eef6;
+    --radius: 8px;
+    --max-width: 980px;
+}
+
+*{box-sizing:border-box}
+html,body{
+    height:100%;
+    margin:0;
+    background:linear-gradient(180deg,#f8fbff 0%,var(--bg) 100%);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color:#111827;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+body{
+    padding:28px;
+    display:flex;
+    justify-content:center;
+}
+
+.container{
+    width:100%;
+    max-width:var(--max-width);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:calc(var(--radius) + 2px);
+    padding:20px 24px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+nav{
+    display:flex;
+    gap:12px;
+    margin-bottom:14px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--accent);
+    padding:8px 12px;
+    border-radius:6px;
+    transition:all .18s ease;
+    font-weight:600;
+    background:transparent;
+    border:1px solid transparent;
+}
+
+nav a:hover{
+    background:rgba(37,99,235,0.08);
+    transform:translateY(-1px);
+    box-shadow: 0 2px 6px rgba(37,99,235,0.06);
+}
+
+h2{
+    margin:8px 0 14px 0;
+    font-size:1.25rem;
+    color:#0f172a;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+li{
+    padding:12px 14px;
+    border-radius:6px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+    border:1px solid transparent;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+li + li{
+    border-top-left-radius:6px;
+}
+
+li .meta{
+    color:var(--muted);
+    font-size:0.95rem;
+}
+
+.pagination{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    margin-top:14px;
+}
+
+a.page-link{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:6px;
+    text-decoration:none;
+    color:var(--accent);
+    border:1px solid transparent;
+    background:transparent;
+    transition:all .15s ease;
+}
+
+a.page-link:hover{
+    background:rgba(16,185,129,0.08);
+    transform:translateY(-1px);
+}
+
+.current-page{
+    padding:8px 12px;
+    border-radius:6px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:700;
+}
+
+.empty{
+    color:var(--muted);
+    padding:12px;
+    text-align:center;
+}
+
+/* responsivo */
+@media (max-width:640px){
+    body{padding:18px}
+    .container{padding:16px}
+    nav{gap:8px}
+    li{flex-direction:column; align-items:flex-start}
+}
