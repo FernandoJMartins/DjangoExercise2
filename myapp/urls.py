@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # include the blog app URLconf and register the 'blog' namespace
     path('', include(('blog.urls', 'blog'), namespace='blog')),
+    # path('signin/', views.signin, name='signin'),
+    # path('signup/', views.signup, name='signup'),
+    # path('logout/', views.logout, name='logout'),
 ]

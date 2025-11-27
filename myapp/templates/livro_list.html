@@ -2,31 +2,30 @@
 
 {% block title %}Exercício Django{% endblock %}
   {% block content %}
+  <div class="container">
   <h2>Lista de Livros</h2>
+  <a href="{% url 'blog:livro-create' %}" class="btn-primary">Novo Livro</a>
   <ul>
     {% for livro in livros %}
-        <li>{{ livro.titulo }} - {{ livro.autor.nome }} - {{ livro.editora.nome }}</li>
+        <li>
+          <span>{{ livro.titulo }} - {{ livro.editora.nome }}</span>
+          <a href="{% url 'blog:livro-edit' livro.pk %}" class="btn-edit">Editar</a>
+        </li>
     {%empty%}
-        <li>Nenhum livro disponível.</li>
+        <li class="empty">Nenhum livro disponível.</li>
     {%endfor %}
-
-
-
-    {% if livros.has_other_pages %}
-
-    {% if livros.has_previous %}
-
-        <a href="?page={{ livros.previous_page_number }}">Anterior</a>
-
-    {% endif %}
-    <span>Página {{ livros.number }} de {{ livros.paginator.num_pages }}</span>
-    {% if livros.has_next %}
-
-        <a href="?page={{ livros.next_page_number }}">Próxima</a>
-
-    {% endif %}
-
-    {% endif %}
   </ul>
+
+  {% if livros.has_other_pages %}
+  <div class="pagination">
+    {% if livros.has_previous %}
+        <a href="?page={{ livros.previous_page_number }}" class="page-link">Anterior</a>
+    {% endif %}
+    <span class="current-page">Página {{ livros.number }} de {{ livros.paginator.num_pages }}</span>
+    {% if livros.has_next %}
+        <a href="?page={{ livros.next_page_number }}" class="page-link">Próxima</a>
+    {% endif %}
+  </div>
+  {% endif %}
+  </div>
   {% endblock %}
-</html>

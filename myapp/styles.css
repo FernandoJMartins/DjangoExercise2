@@ -134,6 +134,80 @@ a.page-link:hover{
     text-align:center;
 }
 
+.btn-primary, .btn-secondary, .btn-edit {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all .15s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: #fff;
+    margin-left: 8px;
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+}
+
+.btn-edit {
+    background: var(--accent-2);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-edit:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+form p {
+    margin-bottom: 14px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #374151;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+form input:focus, form select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+button[type="submit"] {
+    margin-top: 8px;
+}
+
 /* responsivo */
 @media (max-width:640px){
     body{padding:18px}
