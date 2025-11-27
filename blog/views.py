@@ -5,6 +5,7 @@ from .models import Livro
 from .forms import LivroForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import *
+from django.contrib.auth import login, logout as auth_logout
 from django.contrib.auth import *
 from django.contrib.auth.decorators import *
 
