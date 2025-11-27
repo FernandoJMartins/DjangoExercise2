@@ -5,12 +5,15 @@ from .models import Livro
 from .forms import LivroForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import *
+from django.contrib.auth import *
+from django.contrib.auth.decorators import *
 
+@login_required(login_url='blog:signin')
 def home(request):
     return render(request, "home.html", {})
 
 
-
+@login_required(login_url='blog:signin')
 def livro_list(request):
     livros_list = Livro.objects.all()
 
@@ -25,7 +28,7 @@ def livro_list(request):
 
     return render(request, 'livro_list.html', {'livros': livros})
 
-
+@login_required(login_url='blog:signin')
 def livro_create(request):
     if request.method == 'POST':
         form = LivroForm(request.POST)
@@ -36,7 +39,7 @@ def livro_create(request):
         form = LivroForm()
     return render(request, 'livro_form.html', {'form': form, 'action': 'Criar'})
 
-
+@login_required(login_url='blog:signin')
 def livro_edit(request, pk):
     livro = get_object_or_404(Livro, pk=pk)
     if request.method == 'POST':
@@ -47,6 +50,7 @@ def livro_edit(request, pk):
     else:
         form = LivroForm(instance=livro)
     return render(request, 'livro_form.html', {'form': form, 'action': 'Editar'})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -71,5 +75,5 @@ def signin(request):
     return render(request, 'signin.html', {'form': form})
 
 def logout(request):
-    # Lógica para logout de usuário
-    return HttpResponse("Logout realizado com sucesso")
+    auth_logout(request)
+    return redirect('blog:home')
