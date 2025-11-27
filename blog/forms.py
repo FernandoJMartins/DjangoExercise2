@@ -1,7 +1,8 @@
 from django import forms
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import *
 from django.contrib.auth import get_user_model
+
 
 class LivroForm(forms.ModelForm):
     class Meta:
@@ -16,7 +17,7 @@ class LivroForm(forms.ModelForm):
         }
 
 
-class SignInForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -31,3 +32,10 @@ class SignInForm(UserCreationForm):
         return email
 
 
+class SignInForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome de usuário'})
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Senha'})
+    )

@@ -13,38 +13,16 @@
         </div>
       {% endif %}
 
-      <div class="form-group">
-        <label for="{{ form.username.id_for_label }}">Nome de usuário</label>
-        {{ form.username }}
-        {% if form.username.errors %}
-          <span class="error">{{ form.username.errors.0 }}</span>
-        {% endif %}
-      </div>
-
-      <div class="form-group">
-        <label for="{{ form.email.id_for_label }}">Email</label>
-        {{ form.email }}
-        {% if form.email.errors %}
-          <span class="error">{{ form.email.errors.0 }}</span>
-        {% endif %}
-      </div>
-
-      <div class="form-group">
-        <label for="{{ form.password1.id_for_label }}">Senha</label>
-        {{ form.password1 }}
-        {% if form.password1.errors %}
-          <span class="error">{{ form.password1.errors.0 }}</span>
-        {% endif %}
-      </div>
-
-      <div class="form-group">
-        <label for="{{ form.password2.id_for_label }}">Confirmar Senha</label>
-        {{ form.password2 }}
-        {% if form.password2.errors %}
-          <span class="error">{{ form.password2.errors.0 }}</span>
-        {% endif %}
-      </div>
-
+      {% for field in form %}
+        <div class="form-group"> 
+            {{ field.label_tag }} 
+            {{ field }}
+            {% if field.errors %}
+              <span class="error">{{ field.errors.0 }}</span>
+            {% endif %}
+        </div>
+      {% endfor %}
+   
       <div class="form-actions">
         <button type="submit" class="btn-primary">Criar Conta</button>
         <a href="{% url 'blog:home' %}" class="btn-secondary">Cancelar</a>
@@ -52,7 +30,7 @@
     </form>
 
     <p class="auth-link">
-      Já tem uma conta? <a href="{% url 'blog:login' %}">Fazer login</a>
+      Já tem uma conta? <a href="{% url 'blog:signin' %}">Criar Conta</a>
     </p>
   </div>
 </div>
