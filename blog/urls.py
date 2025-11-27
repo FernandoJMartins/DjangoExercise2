@@ -9,5 +9,8 @@ urlpatterns = [
     path('livros/', views.livro_list, name='livro-list'),
     path('livros/novo/', views.livro_create, name='livro-create'),
     path('livros/<int:pk>/editar/', views.livro_edit, name='livro-edit'),
+    path('signin/', views.signin, name='signin'),
+    path('signup/', views.signup, name='signup'),
+    path('logout/', views.logout, name='logout'),
 ]
 # ...existing code...

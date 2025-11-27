@@ -4,6 +4,7 @@ from datetime import datetime
 from .models import Livro
 from .forms import LivroForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import *
 
 def home(request):
     return render(request, "home.html", {})
@@ -46,3 +47,22 @@ def livro_edit(request, pk):
     else:
         form = LivroForm(instance=livro)
     return render(request, 'livro_form.html', {'form': form, 'action': 'Editar'})
+
+def signin(request):
+    if request.method == 'POST':
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('blog:home')
+    else:
+        form = SignInForm()
+    return render(request, 'signin.html', {'form': form})
+
+def signup(request):
+    # Lógica para registro de usuário
+    return HttpResponse("Página de registro")
+
+def logout(request):
+    # Lógica para logout de usuário
+    return HttpResponse("Logout realizado com sucesso")
