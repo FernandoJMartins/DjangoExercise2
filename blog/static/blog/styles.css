@@ -203,6 +203,18 @@ a.page-link:hover{
     transform: translateY(-1px);
 }
 
+.btn-delete {
+    background: red;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+    background: darkred;
+    transform: translateY(-1px);
+}
+
 form p {
     margin-bottom: 14px;
 }

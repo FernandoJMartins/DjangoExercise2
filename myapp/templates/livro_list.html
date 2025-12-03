@@ -4,12 +4,22 @@
   {% block content %}
   <div class="container">
   <h2>Lista de Livros</h2>
+  {% if perms.blog.add_livro %}
   <a href="{% url 'blog:livro-create' %}" class="btn-primary">Novo Livro</a>
+  {% endif %}
   <ul>
     {% for livro in livros %}
         <li>
           <span>{{ livro.titulo }} - {{ livro.editora.nome }}</span>
-          <a href="{% url 'blog:livro-edit' livro.pk %}" class="btn-edit">Editar</a>
+            <div>
+              {% if  perms.blog.change_livro and perms.blog.delete_livro %}
+              <a href="{% url 'blog:livro-edit' livro.pk %}" class="btn-edit">Editar</a>
+              <a href="{% url 'blog:livro-delete' livro.pk %}" class="btn-delete">Excluir</a>
+            
+              {% else %}
+                <span class="no-permission"></span>
+              {% endif %}
+              </div>
         </li>
     {%empty%}
         <li class="empty">Nenhum livro disponível.</li>

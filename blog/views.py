@@ -2,12 +2,13 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
 from .models import Livro
-from .forms import LivroForm
+from .forms import LivroForm, SignUpForm, SignInForm  # ajuste conforme seu forms.py
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import *
-from django.contrib.auth import login, logout as auth_logout
-from django.contrib.auth import *
-from django.contrib.auth.decorators import *
+
+from django.contrib.auth import authenticate, login, logout as auth_logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required, permission_required
+
 
 @login_required(login_url='blog:signin')
 def home(request):
@@ -29,6 +30,7 @@ def livro_list(request):
 
     return render(request, 'livro_list.html', {'livros': livros})
 
+@permission_required('blog.add_livro')
 @login_required(login_url='blog:signin')
 def livro_create(request):
     if request.method == 'POST':
@@ -40,6 +42,7 @@ def livro_create(request):
         form = LivroForm()
     return render(request, 'livro_form.html', {'form': form, 'action': 'Criar'})
 
+@permission_required('blog.change_livro')
 @login_required(login_url='blog:signin')
 def livro_edit(request, pk):
     livro = get_object_or_404(Livro, pk=pk)
@@ -52,6 +55,15 @@ def livro_edit(request, pk):
         form = LivroForm(instance=livro)
     return render(request, 'livro_form.html', {'form': form, 'action': 'Editar'})
 
+
+@permission_required('blog.delete_livro')
+@login_required(login_url='blog:signin')
+def livro_delete(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+    if request.method == 'POST':
+        livro.delete()
+        return redirect('blog:livro-list')
+    return render(request, 'livro_confirm_delete.html', {'livro': livro})
 
 def signup(request):
     if request.method == 'POST':
@@ -66,7 +78,7 @@ def signup(request):
 
 def signin(request):
     if request.method == 'POST':
-        form = SignInForm(request.POST)
+        form = SignInForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
