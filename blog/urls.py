@@ -1,10 +1,14 @@
 # ...existing code...
-from django.urls import path
+from django.urls import include, path
 from . import views
 
 app_name = "blog"
 
 urlpatterns = [
+
+    #API
+    path('api/', include('blog.api_urls')),
+
     path('', views.home, name='home'),
     path('livros/', views.livro_list, name='livro-list'),
     path('livros/novo/', views.livro_create, name='livro-create'),
